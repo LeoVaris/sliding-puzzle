@@ -28,9 +28,9 @@ The main algorithm used is IDA*, which is used for the move searching. There are
   Problem with implementing the walking distance is that the explanation is offered only in Japanese, so using it may fail due
   to problems with translating the material. 
   
-  ## Sources
-  
-  - [15 puzzle - Wikipedia](https://en.wikipedia.org/wiki/15_puzzle)
-  - [Fifteen puzzle optimal solver](http://kociemba.org/themen/fifteen/fifteensolver.html)
-  - [How to make a 15-puzzle automatic answering program (in Japanese, used via Google translate)](http://www.ic-net.or.jp/home/takaken/nt/slide/solve15.html)
+## Sources
+
+- [15 puzzle - Wikipedia](https://en.wikipedia.org/wiki/15_puzzle)
+- [Fifteen puzzle optimal solver](http://kociemba.org/themen/fifteen/fifteensolver.html)
+- [How to make a 15-puzzle automatic answering program (in Japanese, used via Google translate)](http://www.ic-net.or.jp/home/takaken/nt/slide/solve15.html)
   
