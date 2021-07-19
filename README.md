@@ -1,1 +1,5 @@
-# sliding-puzzle
+# Sliding puzzle
+
+## Documentation
+
+* [Specification](link)
