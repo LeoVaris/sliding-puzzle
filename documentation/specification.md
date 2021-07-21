@@ -10,7 +10,7 @@ Project language: English
 
 Goal of this project is to implement a solver for the sliding puzzle. The solver should find one of the shortest sequences. Most common variant of this is the [15 puzzle](https://en.wikipedia.org/wiki/15_puzzle).
 In the beginning the project will focus on the 15 puzzle. If there's is enough time, the project may be expanded to support larger puzzles. For larger puzzles shortest sequence is very difficult to find, but
-find _some_ solution is easier. 
+finding _some_ solution is easier. 
 
 ## Input
 
