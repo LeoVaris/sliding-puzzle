@@ -19,13 +19,12 @@ public class SolverTest {
     @Test
     public void testIsSolvable2() {
         int[][] grid = {
-                {13, 2, 10, 3},
-                {1, 12, 8, 4},
-                {5, 0, 9, 6},
-                {15, 14, 11, 7},
+                { 1, 8, 2 },
+                { 0, 4, 3 },
+                { 7, 5, 6 }
         };
         Solver solver = new Solver(grid);
-        assertTrue(solver.isSolvable());
+        assertFalse(solver.isSolvable());
     }
 
     @Test
@@ -50,5 +49,17 @@ public class SolverTest {
         };
         Solver solver = new Solver(grid);
         assertFalse(solver.isSolvable());
+    }
+
+    @Test
+    public void testIsSolvable5() {
+        int[][] grid = {
+                {13, 2, 10, 3},
+                {1, 12, 8, 4},
+                {5, 0, 9, 6},
+                {15, 14, 11, 7},
+        };
+        Solver solver = new Solver(grid);
+        assertTrue(solver.isSolvable());
     }
 }
