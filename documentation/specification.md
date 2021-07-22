@@ -6,6 +6,8 @@ Study programme: Tietojenkäsittelytieteen kandiohjelma
 
 Project language: English
 
+Programming language: Java
+
 ## The problem
 
 Goal of this project is to implement a solver for the sliding puzzle. The solver should find one of the shortest sequences. Most common variant of this is the [15 puzzle](https://en.wikipedia.org/wiki/15_puzzle).
@@ -15,6 +17,13 @@ finding _some_ solution is easier.
 ## Input
 
 The program will receive the puzzle grid as the input. It will be used to form the shortest sequence of moves to solve the puzzle. 
+The grid is given as a sequence of numbers. Empty location is represented by a zero. For example a 3x3 grid
+```
+3 2 1
+6 5 4
+7 8 _
+```
+would be given as `3 2 1 6 5 4 7 8 0`.
 
 ## Target time complexity
 
