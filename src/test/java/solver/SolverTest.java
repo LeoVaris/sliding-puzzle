@@ -62,4 +62,70 @@ public class SolverTest {
         Solver solver = new Solver(grid);
         assertTrue(solver.isSolvable());
     }
+
+    @Test
+    public void testSolved() {
+        int[][] grid = {
+                {13, 2, 10, 3},
+                {1, 12, 8, 4},
+                {5, 0, 9, 6},
+                {15, 14, 11, 7},
+        };
+        Solver solver = new Solver(grid);
+        assertFalse(solver.solved());
+    }
+
+    @Test
+    public void testSolved2() {
+        int[][] grid = {
+                {1, 2},
+                {3, 0}
+        };
+        Solver solver = new Solver(grid);
+        assertTrue(solver.solved());
+    }
+
+    @Test
+    public void testManhattanDistance() {
+        int[][] grid = {
+                {1, 2},
+                {3, 0}
+        };
+        Solver solver = new Solver(grid);
+        assertEquals(0, solver.manhattanDistance());
+    }
+
+    @Test
+    public void testManhattanDistance2() {
+        int[][] grid = {
+                {3, 2},
+                {0, 1}
+        };
+        Solver solver = new Solver(grid);
+        assertEquals(3, solver.manhattanDistance());
+    }
+
+    @Test
+    public void testManhattanDistance3() {
+        int[][] grid = {
+                {3, 2},
+                {2, 1}
+        };
+        Solver solver = new Solver(grid);
+        assertEquals(5, solver.manhattanDistance());
+    }
+
+    @Test
+    public void testInside() {
+        int[][] grid = {
+                {3, 2},
+                {2, 1}
+        };
+        Solver solver = new Solver(grid);
+        assertTrue(solver.inside(0, 0));
+        assertFalse(solver.inside(-1, 0));
+        assertFalse(solver.inside(0, -1));
+        assertFalse(solver.inside(2, 0));
+        assertFalse(solver.inside(0, 2));
+    }
 }

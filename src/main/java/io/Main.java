@@ -20,7 +20,8 @@ public class Main {
         Solver solver = new Solver(grid);
 
         if (solver.isSolvable()) {
-            System.out.println("This grid can be solved");
+            int moves = solver.minimumMoveCount();
+            System.out.println("This grid can be solved in " + moves + " moves");
         } else {
             System.out.println("This grid cannot be solved");
         }
