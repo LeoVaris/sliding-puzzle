@@ -2,7 +2,7 @@ package solver;
 
 public class Solver {
     int[][] grid;
-    int INF = 1000 * 1000;
+    final int infinity = 1000 * 1000;
 
     public Solver(int[][] grid) {
         this.grid = grid;
@@ -42,17 +42,15 @@ public class Solver {
         int m = this.grid[0].length;
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < m; ++j) {
-                if (this.grid[i][j] != 0) ans += this.manhattanDistance(i, j);
+                if (this.grid[i][j] != 0) {
+                    ans += this.manhattanDistance(i, j);
+                }
             }
         }
-
         return ans;
     }
 
     public int minimumMoveCount() {
-        // IDA* implementation
-
-
         int startDistance = this.manhattanDistance();
         int bound = startDistance;
         int emptyX = -1, emptyY = -1;
@@ -71,7 +69,6 @@ public class Solver {
             bound = minCost;
             minCost = this.search(0, startDistance, emptyY, emptyX, bound);
         }
-
         return minCost;
     }
 
@@ -80,7 +77,9 @@ public class Solver {
         int m = this.grid[0].length;
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < m; ++j) {
-                if (this.grid[i][j] != 0 && this.grid[i][j] != i * m + j + 1) return false;
+                if (this.grid[i][j] != 0 && this.grid[i][j] != i * m + j + 1) {
+                    return false;
+                }
             }
         }
         return true;
@@ -106,12 +105,14 @@ public class Solver {
                 {0, 1}
         };
 
-        int minDistance = this.INF;
+        int minDistance = this.infinity;
 
         for (int[] dir : directions) {
             int tx = emptyX + dir[0];
             int ty = emptyY + dir[1];
-            if (!this.inside(ty, tx)) continue;
+            if (!this.inside(ty, tx)) {
+                continue;
+            }
 
             int currentDistance = this.manhattanDistance(ty, tx);
             this.grid[emptyY][emptyX] = this.grid[ty][tx];
