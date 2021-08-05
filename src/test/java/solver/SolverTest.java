@@ -128,4 +128,37 @@ public class SolverTest {
         assertFalse(solver.inside(2, 0));
         assertFalse(solver.inside(0, 2));
     }
+
+    @Test
+    public void testMinimumMoveCount() {
+        int[][] grid = {
+                { 1, 8, 2 },
+                { 0, 4, 3 },
+                { 7, 6, 5 }
+        };
+        Solver solver = new Solver(grid);
+        assertTrue(solver.minimumMoveCount() > 0);
+    }
+
+    @Test
+    public void testMinimumMoveCount2() {
+        int[][] grid = {
+                { 0, 8, 2 },
+                { 1, 4, 3 },
+                { 7, 6, 5 }
+        };
+        Solver solver = new Solver(grid);
+        assertTrue(solver.minimumMoveCount() > 0);
+    }
+
+    @Test
+    public void testMinimumMoveCount3() {
+        int[][] grid = {
+                { 8, 0, 2 },
+                { 1, 4, 3 },
+                { 7, 6, 5 }
+        };
+        Solver solver = new Solver(grid);
+        assertTrue(solver.minimumMoveCount() > 0);
+    }
 }

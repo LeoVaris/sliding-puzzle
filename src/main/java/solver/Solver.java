@@ -1,13 +1,22 @@
 package solver;
 
+/**
+ * This class is the main solver for the puzzle.
+ */
 public class Solver {
     int[][] grid;
     final int infinity = 1000 * 1000;
 
+    /**
+     * @param grid The input to the puzzle. Input should be an n * m array of integers from 0 to n * m - 1. The empty square should be given as a zero.
+     */
     public Solver(int[][] grid) {
         this.grid = grid;
     }
 
+    /**
+     * @return Whether the puzzle can be solved
+     */
     public boolean isSolvable() {
         int n = this.grid.length;
 
@@ -31,11 +40,19 @@ public class Solver {
         return n % 2 == 0 && emptyRow % 2 != inversions % 2;
     }
 
+    /**
+     * @param y Y coordinate
+     * @param x X coordinate
+     * @return The manhattan distance of the number at X, Y to its target square.
+     */
     public int manhattanDistance(int y, int x) {
         int value = this.grid[y][x] - 1;
         return Math.abs(x - (value % this.grid[0].length)) + Math.abs(y - (value / this.grid.length));
     }
 
+    /**
+     * @return The manhattan distance of the current grid.
+     */
     public int manhattanDistance() {
         int ans = 0;
         int n = this.grid.length;
@@ -50,6 +67,9 @@ public class Solver {
         return ans;
     }
 
+    /**
+     * @return The minimum count of moves to solve the current grid. Should be used only if grid is solvable.
+     */
     public int minimumMoveCount() {
         int startDistance = this.manhattanDistance();
         int bound = startDistance;
@@ -72,6 +92,9 @@ public class Solver {
         return minCost;
     }
 
+    /**
+     * @return Whether the current grid is solved.
+     */
     public boolean solved() {
         int n = this.grid.length;
         int m = this.grid[0].length;
@@ -85,6 +108,11 @@ public class Solver {
         return true;
     }
 
+    /**
+     * @param y Y coordinate
+     * @param x X coordinate
+     * @return Whether the X, Y coordinates are inside the grid, i.e 0 <= X < m and 0 <= Y < n.
+     */
     public boolean inside(int y, int x) {
         int n = this.grid.length;
         int m = this.grid[0].length;
