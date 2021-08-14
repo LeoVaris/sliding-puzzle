@@ -7,6 +7,8 @@
 
 - [Week 1](https://github.com/LeoVaris/sliding-puzzle/blob/master/documentation/week-report-1.md)
 - [Week 2](https://github.com/LeoVaris/sliding-puzzle/blob/master/documentation/week-report-2.md)
+- [Week 3](https://github.com/LeoVaris/sliding-puzzle/blob/master/documentation/week-report-3.md)
+- Week 4 report and code will be added saturday.
 
 ## Documentation
 
