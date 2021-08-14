@@ -13,3 +13,4 @@
 ## Documentation
 
 * [Specification](https://github.com/LeoVaris/sliding-puzzle/blob/master/documentation/specification.md)
+* [Testing document](https://github.com/LeoVaris/sliding-puzzle/blob/master/documentation/testing.md)
