@@ -40,7 +40,9 @@ public class Tester {
             long start = System.nanoTime();
             int moves = this.minimumCountOfMoves(this.grid);
             long end = System.nanoTime();
-            if (moves == -1) return;
+            if (moves == -1) {
+                return;
+            }
             this.timesByMoveCount[moves] += end - start;
             this.countOfGridsByMoveCount[moves]++;
             this.totalCountOfGrids++;
@@ -50,7 +52,9 @@ public class Tester {
             return;
         }
         for (int i = 0; i < n * m; ++i) {
-            if (this.reserved[i]) continue;
+            if (this.reserved[i]) {
+                continue;
+            }
             this.reserved[i] = true;
             this.grid[pos / m][pos % n] = i;
             this.runPermutations(pos + 1);
@@ -60,7 +64,9 @@ public class Tester {
 
     public int minimumCountOfMoves(int[][] grid) {
         Solver solver = new Solver(grid);
-        if (!solver.isSolvable()) return -1;
+        if (!solver.isSolvable()) {
+            return -1;
+        }
         return solver.minimumMoveCount();
     }
 }
