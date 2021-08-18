@@ -64,28 +64,6 @@ public class SolverTest {
     }
 
     @Test
-    public void testSolved() {
-        int[][] grid = {
-                {13, 2, 10, 3},
-                {1, 12, 8, 4},
-                {5, 0, 9, 6},
-                {15, 14, 11, 7},
-        };
-        Solver solver = new Solver(grid);
-        assertFalse(solver.solved());
-    }
-
-    @Test
-    public void testSolved2() {
-        int[][] grid = {
-                {1, 2},
-                {3, 0}
-        };
-        Solver solver = new Solver(grid);
-        assertTrue(solver.solved());
-    }
-
-    @Test
     public void testManhattanDistance() {
         int[][] grid = {
                 {1, 2},
@@ -148,7 +126,7 @@ public class SolverTest {
                 { 7, 6, 5 }
         };
         Solver solver = new Solver(grid);
-        assertTrue(solver.minimumMoveCount() > 0);
+        assertTrue(solver.minimumMoveCount() == solver.manhattanDistance());
     }
 
     @Test

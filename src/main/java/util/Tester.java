@@ -3,30 +3,30 @@ package util;
 import solver.Solver;
 
 public class Tester {
-    long[] timesByMoveCount;
-    int[] countOfGridsByMoveCount;
-    int[][] grid;
-    int totalCountOfGrids;
-    boolean[] reserved;
-    int n, m;
+    static long[] timesByMoveCount;
+    static int[] countOfGridsByMoveCount;
+    static int[][] grid;
+    static int totalCountOfGrids;
+    static boolean[] reserved;
+    static int n, m;
 
-    public Tester() {
-        this.n = 3;
-        this.m = 3;
-        this.totalCountOfGrids = 0;
-        this.timesByMoveCount = new long[100];
-        this.grid = new int[n][m];
-        this.reserved = new boolean[n * m];
-        this.countOfGridsByMoveCount = new int[100];
+    public static void main(String[] args) {
+        n = 3;
+        m = 3;
+        totalCountOfGrids = 0;
+        timesByMoveCount = new long[100];
+        grid = new int[n][m];
+        reserved = new boolean[n * m];
+        countOfGridsByMoveCount = new int[100];
 
-        this.runPermutations(0);
+        runPermutations(0);
 
-        for (int i = 1; i <= 100; ++i) {
-            System.out.print("Moves: " + i + " average time " + this.timesByMoveCount[i] / 1000000.0 / this.countOfGridsByMoveCount[i] + "ms");
+        for (int i = 1; i < 100; ++i) {
+            System.out.println("Moves: " + i + " average time " + timesByMoveCount[i] / 1000000.0 / countOfGridsByMoveCount[i] + "ms");
         }
     }
 
-    private long factorial(long num) {
+    private static long factorial(long num) {
         long ans = 1;
         for (long i = 2; i <= num; ++i) {
             ans *= i;
@@ -34,35 +34,36 @@ public class Tester {
         return ans;
     }
 
-    public void runPermutations(int pos) {
+    public static void runPermutations(int pos) {
+        if (totalCountOfGrids > 500) return;
         if (pos == n * m) {
             // Run test
             long start = System.nanoTime();
-            int moves = this.minimumCountOfMoves(this.grid);
+            int moves = minimumCountOfMoves(grid);
             long end = System.nanoTime();
             if (moves == -1) {
                 return;
             }
-            this.timesByMoveCount[moves] += end - start;
-            this.countOfGridsByMoveCount[moves]++;
-            this.totalCountOfGrids++;
-            if (this.totalCountOfGrids % 10 == 0) {
-                System.out.println("Tested " + this.totalCountOfGrids + "/" + (this.factorial((long) this.n * this.m)));
+            timesByMoveCount[moves] += end - start;
+            countOfGridsByMoveCount[moves]++;
+            totalCountOfGrids++;
+            if (totalCountOfGrids % 10 == 0) {
+                System.out.println("Tested " + totalCountOfGrids + "/" + (factorial((long) n * m)));
             }
             return;
         }
         for (int i = 0; i < n * m; ++i) {
-            if (this.reserved[i]) {
+            if (reserved[i]) {
                 continue;
             }
-            this.reserved[i] = true;
-            this.grid[pos / m][pos % n] = i;
-            this.runPermutations(pos + 1);
-            this.reserved[i] = false;
+            reserved[i] = true;
+            grid[pos / n][pos % m] = i;
+            runPermutations(pos + 1);
+            reserved[i] = false;
         }
     }
 
-    public int minimumCountOfMoves(int[][] grid) {
+    public static int minimumCountOfMoves(int[][] grid) {
         Solver solver = new Solver(grid);
         if (!solver.isSolvable()) {
             return -1;

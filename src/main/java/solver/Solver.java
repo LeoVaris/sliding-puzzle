@@ -19,16 +19,17 @@ public class Solver {
      */
     public boolean isSolvable() {
         int n = this.grid.length;
+        int m = this.grid[0].length;
 
         int inversions = 0;
 
         // This could be calculated in O(n log n), but O(n^2) is good enough (here n is the number of cells).
         int emptyRow = -1;
-        for (int i = 0; i < n * n; ++i) {
-            for (int j = i + 1; j < n * n; ++j) {
-                if (this.grid[j / n][j % n] == 0) {
+        for (int i = 0; i < n * m; ++i) {
+            for (int j = i + 1; j < n * m; ++j) {
+                if (this.grid[j / n][j % m] == 0) {
                     emptyRow = n - j / n;
-                } else if (this.grid[i / n][i % n] > this.grid[j / n][j % n]) {
+                } else if (this.grid[i / n][i % m] > this.grid[j / n][j % m]) {
                     inversions++;
                 }
             }
@@ -85,27 +86,12 @@ public class Solver {
             }
         }
         int minCost = this.search(0, startDistance, emptyY, emptyX, bound);
-        while (minCost > bound) {
+        while (minCost > bound && bound < startDistance * 3) {
             bound = minCost;
             minCost = this.search(0, startDistance, emptyY, emptyX, bound);
         }
+        if (bound >= startDistance * 3) return -1;
         return minCost;
-    }
-
-    /**
-     * @return Whether the current grid is solved.
-     */
-    public boolean solved() {
-        int n = this.grid.length;
-        int m = this.grid[0].length;
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < m; ++j) {
-                if (this.grid[i][j] != 0 && this.grid[i][j] != i * m + j + 1) {
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 
     /**
@@ -123,7 +109,7 @@ public class Solver {
         if (moves + distance > bound) {
             return moves + distance;
         }
-        if (this.solved()) {
+        if (distance == 0) {
             return moves;
         }
         int[][] directions = {

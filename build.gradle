@@ -5,6 +5,10 @@ plugins {
     id 'checkstyle'
     id "com.github.johnrengelman.shadow" version "6.1.0"
 }
+apply plugin : "java"
+ext {
+    javaMainClass = "util.Tester"
+}
 
 repositories {
     mavenCentral()
@@ -45,4 +49,11 @@ jacocoTestReport {
             fileTree(dir: it, exclude: ['io/**', 'util/**'])
         }))
     }
+}
+
+task runPerfTest(type: JavaExec) {
+    group = "Execution"
+    description = "Performance tests"
+    classpath = sourceSets.main.runtimeClasspath
+    main = javaMainClass
 }
