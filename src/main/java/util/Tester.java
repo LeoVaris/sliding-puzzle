@@ -2,6 +2,8 @@ package util;
 
 import solver.Solver;
 
+import java.util.Arrays;
+
 public class Tester {
     static long[] timesByMoveCount;
     static int[] countOfGridsByMoveCount;

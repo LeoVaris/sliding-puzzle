@@ -132,9 +132,20 @@ public class SolverTest {
     @Test
     public void testMinimumMoveCount3() {
         int[][] grid = {
-                { 8, 0, 2 },
-                { 1, 4, 3 },
-                { 7, 6, 5 }
+                {8, 0, 2},
+                {1, 4, 3},
+                {7, 6, 5}
+        };
+        Solver solver = new Solver(grid);
+        assertTrue(solver.minimumMoveCount() > 0);
+    }
+
+    @Test
+    public void testMinimumMoveCount4() {
+        int[][] grid = {
+                {0, 1, 2},
+                {5, 8, 4},
+                {6, 3, 7},
         };
         Solver solver = new Solver(grid);
         assertTrue(solver.minimumMoveCount() > 0);
