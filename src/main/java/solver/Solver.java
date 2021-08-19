@@ -90,7 +90,9 @@ public class Solver {
             bound = minCost;
             minCost = this.search(0, startDistance, emptyY, emptyX, bound);
         }
-        if (bound >= startDistance * 3) return -1;
+        if (bound >= startDistance * 3) {
+            return -1;
+        }
         return minCost;
     }
 

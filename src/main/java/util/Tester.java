@@ -35,7 +35,6 @@ public class Tester {
     }
 
     public static void runPermutations(int pos) {
-        if (totalCountOfGrids > 500) return;
         if (pos == n * m) {
             // Run test
             long start = System.nanoTime();
