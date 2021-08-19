@@ -25,6 +25,7 @@ public class SolverTest {
         };
         Solver solver = new Solver(grid);
         assertFalse(solver.isSolvable());
+        assertEquals(-1, solver.minimumMoveCount());
     }
 
     @Test
@@ -126,7 +127,7 @@ public class SolverTest {
                 { 7, 6, 5 }
         };
         Solver solver = new Solver(grid);
-        assertTrue(solver.minimumMoveCount() == solver.manhattanDistance());
+        assertEquals(solver.minimumMoveCount(), solver.manhattanDistance());
     }
 
     @Test
