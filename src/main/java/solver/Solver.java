@@ -107,6 +107,16 @@ public class Solver {
         return x >= 0 && y >= 0 && x < m && y < n;
     }
 
+    /**
+     * The main search algorithm. Used to calculate the minimum number of required moves.
+     *
+     * @param moves The number of used to reach this state.
+     * @param distance The manhattan distance remaining
+     * @param emptyY The Y coordinate of the empty cell
+     * @param emptyX The X coordinate of the empty cell
+     * @param bound The bound, after which the searching will be stopped.
+     * @return The minimum number of required moves.
+     */
     public int search(int moves, int distance, int emptyY, int emptyX, int bound) {
         if (moves + distance > bound) {
             return moves + distance;
