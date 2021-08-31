@@ -5,6 +5,9 @@ package solver;
  */
 public class Solver {
     int[][] grid;
+    int[] currentPath;
+    int[] bestPath;
+    int bestSolution;
     final int infinity = 1000 * 1000;
 
     /**
@@ -12,6 +15,9 @@ public class Solver {
      */
     public Solver(int[][] grid) {
         this.grid = grid;
+        this.currentPath = new int[100];
+        this.bestPath = new int[100];
+        this.bestSolution = this.infinity;
     }
 
     /**
@@ -122,6 +128,10 @@ public class Solver {
             return moves + distance;
         }
         if (distance == 0) {
+            if (moves < this.bestSolution) {
+                this.bestSolution = moves;
+                this.bestPath = this.currentPath.clone();
+            }
             return moves;
         }
         int[][] directions = {
@@ -147,6 +157,8 @@ public class Solver {
 
             int newDistance = this.manhattanDistance(emptyY, emptyX);
 
+            this.currentPath[moves] = this.grid[emptyY][emptyX];
+
             minDistance = Math.min(minDistance, this.search(moves + 1, distance - currentDistance + newDistance, ty, tx, bound));
 
             this.grid[ty][tx] = this.grid[emptyY][emptyX];
@@ -154,5 +166,13 @@ public class Solver {
         }
 
         return minDistance;
+    }
+
+    public IntegerList getBestPath(int steps) {
+        IntegerList list = new IntegerList(steps + 1);
+        for (int i = 0; i < steps; ++i) {
+            list.add(this.bestPath[i]);
+        }
+        return list;
     }
 }

@@ -1,6 +1,7 @@
 package solver;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class SolverTest {
@@ -14,6 +15,13 @@ public class SolverTest {
         };
         Solver solver = new Solver(grid);
         assertTrue(solver.isSolvable());
+        assertEquals(9, solver.minimumMoveCount());
+        IntegerList list = solver.getBestPath(9);
+        int[] solution = { 4, 8, 2, 3, 5, 6, 8, 5, 6 };
+        assertEquals(9, list.size());
+        for (int i = 0; i < 9; ++i) {
+            assertEquals(solution[i], list.get(i));
+        }
     }
 
     @Test
