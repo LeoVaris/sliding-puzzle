@@ -8,26 +8,20 @@ public class RandomizedTester {
 
     public static void main(String[] args) {
         Random r = new Random(1);
-
         int[][] grid = {
                 { 1, 2, 3},
                 { 4, 5, 6},
                 { 7, 8, 0}
         };
-
         long[] timesByMoveCount = new long[100];
         int[] countOfGridsByMoveCount = new int[100];
-
         int runs = 1000;
         if (args.length > 0) {
             runs = Integer.parseInt(args[0]);
         }
-
         while (runs > 0) {
             runs--;
-
             generateNextGrid(grid, r);
-
             long start = System.nanoTime();
             int moves = minimumCountOfMoves(grid);
             long end = System.nanoTime();
@@ -39,16 +33,10 @@ public class RandomizedTester {
         }
 
         for (int i = 1; i < 100; ++i) {
-            /*if (countOfGridsByMoveCount[i] == 0) {
-                break;
-            }*/
             System.out.println("Moves: " + i + " average time " + timesByMoveCount[i] / 1000000.0 / countOfGridsByMoveCount[i] + "ms");
         }
 
         for (int i = 1; i < 100; ++i) {
-            /*if (countOfGridsByMoveCount[i] == 0) {
-                break;
-            }*/
             System.out.println(i + ", " + timesByMoveCount[i] / 1000000.0 / countOfGridsByMoveCount[i]);
         }
     }
@@ -72,7 +60,9 @@ public class RandomizedTester {
                     break;
                 }
             }
-            if (ex != -1) break;
+            if (ex != -1) {
+                break;
+            }
         }
 
         while (true) {
