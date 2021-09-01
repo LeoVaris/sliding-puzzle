@@ -7,7 +7,14 @@ plugins {
 }
 apply plugin : "java"
 ext {
-    javaMainClass = "util.Tester"
+    javaMainClass = "util.PermutationTester"
+    testMainClass = "util.RandomizedTester"
+}
+
+if (project.hasProperty("args")) {
+    ext.cmdargs = project.getProperty("args")
+} else {
+    ext.cmdargs = ""
 }
 
 repositories {
@@ -51,9 +58,22 @@ jacocoTestReport {
     }
 }
 
-task runPerfTest(type: JavaExec) {
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+}
+
+task runPermutationTest(type: JavaExec) {
     group = "Execution"
     description = "Performance tests"
     classpath = sourceSets.main.runtimeClasspath
     main = javaMainClass
+}
+
+task runRandomizedTest(type: JavaExec) {
+    group = "Execution"
+    description = "Performance tests"
+    classpath = sourceSets.main.runtimeClasspath
+    main = testMainClass
+    args cmdargs.split()
 }

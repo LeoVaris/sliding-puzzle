@@ -4,7 +4,7 @@ import solver.Solver;
 
 import java.util.Arrays;
 
-public class Tester {
+public class PermutationTester {
     static long[] timesByMoveCount;
     static int[] countOfGridsByMoveCount;
     static int[][] grid;

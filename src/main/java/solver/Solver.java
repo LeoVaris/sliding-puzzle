@@ -105,7 +105,7 @@ public class Solver {
     /**
      * @param y Y coordinate
      * @param x X coordinate
-     * @return Whether the X, Y coordinates are inside the grid, i.e 0 <= X < m and 0 <= Y < n.
+     * @return Whether the X, Y coordinates are inside the grid, i.e 0 {@literal <}= X {@literal <} m and 0 {@literal <}= Y {@literal <} n.
      */
     public boolean inside(int y, int x) {
         int n = this.grid.length;
@@ -168,6 +168,11 @@ public class Solver {
         return minDistance;
     }
 
+
+    /**
+     * @param steps The number of steps to generate the path for.
+     * @return Returns a list containing the steps of the optimal solution.
+     */
     public IntegerList getBestPath(int steps) {
         IntegerList list = new IntegerList(steps + 1);
         for (int i = 0; i < steps; ++i) {
