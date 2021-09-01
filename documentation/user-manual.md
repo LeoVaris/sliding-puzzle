@@ -1,5 +1,19 @@
 # User manual
 
+## Running the program
+
+### Using the jar
+
+First download the latest release and find the Jar. 
+
+You can then run the project using the command
+
+```
+java -jar sliding-puzzle-all.jar
+```
+
+### Using gradle
+
 First clone the project and navigate to the root of the project. 
 
 To run the program, use the command
@@ -7,6 +21,8 @@ To run the program, use the command
 ```
 ./gradlew run --quiet --console=plain
 ```
+
+## Input
 
 The grid should be given in a single line. 
 
