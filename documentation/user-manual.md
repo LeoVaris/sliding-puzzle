@@ -4,7 +4,7 @@
 
 ### Using the jar
 
-First download the latest release and find the Jar. 
+First find the latest release and download the Jar. 
 
 You can then run the project using the command
 
